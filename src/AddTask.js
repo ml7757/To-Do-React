@@ -12,12 +12,15 @@ class AddTask extends React.Component{
 
     render(){
         return (
-          <form onSubmit={this.onSubmit.bind(this)}>
-            <label>Task: </label>
-            <input type="text" ref="task" />
-            <label>Finsh By: </label>
-            <input type="date" ref="dueDate" /><br>
-            <input type="submit" value="submit" />
+          <form>
+            <fieldset>
+              <legend>New Task</legend>
+              <label>Task: </label>
+              <input type="text" ref="task" />
+              <p><label>Finsh By: </label>
+              <input type="date" ref="dueDate" /></p>
+              <p><button>Save Task</button></p>
+            </fieldset>
           </form>
         );
     }
