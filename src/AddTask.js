@@ -1,4 +1,5 @@
 import React from 'react';
+import AddPriority from './AddPriority';
 
 class AddTask extends React.Component{
 
@@ -15,10 +16,11 @@ class AddTask extends React.Component{
           <form>
             <fieldset>
               <legend>New Task</legend>
-              <label>Task: </label>
+              <label><b>Task: </b></label>
               <input type="text" ref="task" />
-              <p><label>Finsh By: </label>
+              <p><label><b>Finish By: </b></label>
               <input type="date" ref="dueDate" /></p>
+              <AddPriority />
               <p><button>Save Task</button></p>
             </fieldset>
           </form>
