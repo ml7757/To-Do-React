@@ -6,7 +6,6 @@ import Task from './Task';
 
 class App extends React.Component{
 
-
   constructor(){
     super();
 
@@ -21,7 +20,6 @@ class App extends React.Component{
     this.setState({
             tasks: newTasks
         });
-
   }
 
   renderTask(task){
