@@ -1,5 +1,5 @@
 import React from 'react';
-import AddPriorityStatus from './AddPriorityStatus';
+//import AddPriorityStatus from './AddPriorityStatus';
 
 class AddTaskForm extends React.Component {
 
