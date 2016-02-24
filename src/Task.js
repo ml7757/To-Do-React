@@ -4,13 +4,14 @@ class Task extends React.Component{
 
   constructor(){
     super();
+
   }
 
   render(){
     return (
-      <div>
-      <p>{this.props.taskDescription} {this.props.finishBy}</p>
-      </div>
+      <li>
+        {this.props.description} - {this.props.due}
+      </li>
     );
   }
 }

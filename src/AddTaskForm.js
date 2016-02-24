@@ -5,7 +5,7 @@ class AddTaskForm extends React.Component {
 
     onSubmitForm(event){
       event.preventDefault();
-      this.props.onHandleData(this.refs.task.value, this.refs.dueDate.value);
+      this.props.onHandleData(this.refs.taskDescription.value, this.refs.dueDate.value);
     }
 
     render(){
@@ -14,7 +14,7 @@ class AddTaskForm extends React.Component {
             <fieldset>
               <legend>New Task</legend>
               <label><b>Task: </b></label>
-              <input type="text" ref="task" />
+              <input type="text" ref="taskDescription" />
               <p><label><b>Finish By: </b></label>
               <input type="date" ref="dueDate" /></p>
               <p><button>Save Task</button></p>
