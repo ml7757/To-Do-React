@@ -10,7 +10,7 @@ class Task extends React.Component{
   render(){
     return (
       <li>
-        {this.props.description} - {this.props.due}
+        {this.props.task_description} - {this.props.duedate}
       </li>
     );
   }
