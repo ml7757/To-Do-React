@@ -1,3 +1,4 @@
+import './stylesheets/components.scss';
 import React from 'react';
 //import jQuery from 'jquery';
 import AddTaskForm from './AddTaskForm';
@@ -29,12 +30,13 @@ class App extends React.Component{
 
     render(){
         return (
-          <div>
-          <ul>
+          <div className="bio">
+          <img src="Checklogo.png" />
+          <h1 className="head">Check &#9745;</h1>
+		  <ul>
             {this.state.tasks.map(this.renderTask.bind(this))}
           </ul>
-          <hr />
-            <AddTaskForm onHandleData={this.onAddTask.bind(this)} />
+          <AddTaskForm onHandleData={this.onAddTask.bind(this)} />
           </div>
         );
     }
