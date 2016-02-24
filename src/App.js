@@ -30,13 +30,13 @@ class App extends React.Component{
 
     render(){
         return (
+
           <div className="bio">
-          <img src="Checklogo.png" />
-          <h1 className="head">Check &#9745;</h1>
-		  <ul>
-            {this.state.tasks.map(this.renderTask.bind(this))}
-          </ul>
-          <AddTaskForm onHandleData={this.onAddTask.bind(this)} />
+             <img className="logo" src="http://s17.postimg.org/6ntnarrfz/Checklogo2.png" />
+		        <ul>
+              {this.state.tasks.map(this.renderTask.bind(this))}
+            </ul>
+            <AddTaskForm onHandleData={this.onAddTask.bind(this)} />
           </div>
         );
     }
