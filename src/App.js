@@ -1,12 +1,12 @@
 import React from 'react';
-import jQuery from 'jquery';
+//import jQuery from 'jquery';
 import AddTaskForm from './AddTaskForm';
 
 
 class App extends React.Component{
 
   onAddTask(task_value, date_value){
-    console.log("I need to get " + task_value " on " + date_value );
+    console.log(task_value + date_value );
   }
 
     render(){
