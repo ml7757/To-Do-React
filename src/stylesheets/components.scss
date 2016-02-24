@@ -1,0 +1,26 @@
+// stylesteets/components.scss
+
+// First include Bootstrap
+@import "bootstrap";
+
+// Below import your components' scss files
+// @import "components/base";
+// @import "components/todo-item";
+body {
+  background-color: #F5F5f5;
+  text-align: center;
+}
+
+   .bio {
+     @extend .row;
+     @extend .text-muted;
+
+   .head {
+      @extend .col-sm-2;
+
+    img {
+      @extend .img-responsive;
+      @extend .img-circle;
+    }
+  }
+}
