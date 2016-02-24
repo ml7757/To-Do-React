@@ -1,17 +1,44 @@
-import './stylesheets/components.scss';
 import React from 'react';
+import jQuery from 'jquery';
+import './stylesheets/components.scss';
 //import AddPriorityStatus from './AddPriorityStatus';
 
 class AddTaskForm extends React.Component {
 
-    onSubmitForm(event){
+    saveTask(event){
       event.preventDefault();
-      this.props.onHandleData(this.refs.taskDescription.value, this.refs.dueDate.value);
+
+      var component = this;
+      var task = {
+        task_description: this.refs.taskDescription.value,
+        duedate: this.refs.dueDate.value
+      }
+      console.log(task);
+
+      jQuery.ajax({
+          type: "POST",
+          url: "https://checktaskmanager.herokuapp.com/tasks.json",
+          data: JSON.stringify({
+              task: task
+          }),
+          contentType: "application/json",
+          dataType: "json"
+      })
+      .done(function(data) {
+        console.log(data);
+        component.props.onChange();
+        component.refs.taskDescription.value = "";
+        component.refs.dueDate.value= "";
+      })
+
+      .fail(function(error) {
+        console.log(error);
+      });
     }
 
     render(){
         return (
-          <form onSubmit={this.onSubmitForm.bind(this)}>
+          <form onSubmit={this.saveTask.bind(this)}>
             <fieldset>
               <legend><em>Add a Task </em></legend>
               <label><b>Task: </b></label>
