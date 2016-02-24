@@ -1,22 +1,43 @@
 import React from 'react';
 //import jQuery from 'jquery';
 import AddTaskForm from './AddTaskForm';
-
+import Task from './Task';
 
 class App extends React.Component{
 
-  onAddTask(task_value, date_value){
-    console.log(task_value + date_value );
+
+  constructor(){
+    super();
+
+    this.state = {
+      tasks: []
+    };
   }
+
+  onAddTask(taskDescription, dueDate){
+    var newTask = { description: taskDescription, due: dueDate };
+    var newTasks = this.state.tasks.concat(newTask);
+    this.setState({
+            tasks: newTasks
+        });
+
+  }
+
+  renderTask(task){
+        return <Task key={task.id} description={task.description} due={task.due}/>;
+    }
 
     render(){
         return (
           <div>
-          <h1>Check &#9745;</h1>
-          <AddTaskForm onHandleData={this.onAddTask.bind(this)} />
+          <ul>
+            {this.state.tasks.map(this.renderTask.bind(this))}
+          </ul>
+          <hr />
+            <AddTaskForm onHandleData={this.onAddTask.bind(this)} />
           </div>
         );
     }
-}
+  }
 
 export default App;
