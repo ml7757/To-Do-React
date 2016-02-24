@@ -1,10 +1,6 @@
 import React from 'react';
 
-class AddPriority extends React.Component{
-
-    constructor(){
-      super();
-    }
+class AddPriorityStatus extends React.Component{
 
     onSubmit(event){
       event.preventDefault();
@@ -22,4 +18,4 @@ class AddPriority extends React.Component{
     }
 }
 
-export default AddPriority;
+export default AddPriorityStatus;

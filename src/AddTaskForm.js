@@ -1,26 +1,22 @@
 import React from 'react';
-import AddPriority from './AddPriority';
+import AddPriorityStatus from './AddPriorityStatus';
 
-class AddTask extends React.Component{
+class AddTaskForm extends React.Component {
 
-    constructor(){
-      super();
-    }
-
-    onSubmit(event){
+    onSubmitForm(event){
       event.preventDefault();
+      this.props.onHandleData(this.refs.task.value, this.refs.dueDate.value);
     }
 
     render(){
         return (
-          <form>
+          <form onSubmit={this.onSubmitForm.bind(this)}>
             <fieldset>
               <legend>New Task</legend>
               <label><b>Task: </b></label>
               <input type="text" ref="task" />
               <p><label><b>Finish By: </b></label>
               <input type="date" ref="dueDate" /></p>
-              <AddPriority />
               <p><button>Save Task</button></p>
             </fieldset>
           </form>
@@ -28,4 +24,4 @@ class AddTask extends React.Component{
     }
 }
 
-export default AddTask;
+export default AddTaskForm;
