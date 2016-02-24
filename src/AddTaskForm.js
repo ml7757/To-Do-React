@@ -1,3 +1,4 @@
+import './stylesheets/components.scss';
 import React from 'react';
 //import AddPriorityStatus from './AddPriorityStatus';
 
@@ -12,12 +13,12 @@ class AddTaskForm extends React.Component {
         return (
           <form onSubmit={this.onSubmitForm.bind(this)}>
             <fieldset>
-              <legend>New Task</legend>
+              <legend><em>Add a Task </em></legend>
               <label><b>Task: </b></label>
               <input type="text" ref="taskDescription" />
               <p><label><b>Finish By: </b></label>
               <input type="date" ref="dueDate" /></p>
-              <p><button>Save Task</button></p>
+              <p><button className="btn-border-radius-base">Save Task</button></p>
             </fieldset>
           </form>
         );

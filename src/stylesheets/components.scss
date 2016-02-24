@@ -2,13 +2,23 @@
 
 // First include Bootstrap
 @import "bootstrap";
-
+@import "bootstrap/buttons";
+@import "bootstrap/forms";
 // Below import your components' scss files
 // @import "components/base";
 // @import "components/todo-item";
 body {
-  background-color: #F5F5f5;
+  background-color: #B6B6B6;
   text-align: center;
+}
+
+.logo {
+  width: 300px;
+  height: 160px;
+}
+
+.title {
+  font-size: 500px;
 }
 
    .bio {
