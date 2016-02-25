@@ -38,7 +38,7 @@ class ProjectList extends React.Component{
           <div>
             <h1>Projects</h1>
             <ProjectForm onChange={this.renderProjects.bind(this)} />
-            
+
             {this.state.projects.map(function(project, i){
               return(
                 <ProjectItem key={project.id}

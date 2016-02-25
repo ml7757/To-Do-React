@@ -11,7 +11,7 @@ class ProjectItem extends React.Component{
     render(){
       return(
         <div>
-          <h1>My Project</h1>
+          <h2>{this.props.name}</h2>
 
         </div>
       );

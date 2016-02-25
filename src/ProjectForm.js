@@ -12,7 +12,7 @@ class ProjectsForm extends React.Component{
     event.preventDefault();
     var component = this;
 
-    formData = {
+    var formData = {
       name: component.refs.projectName.value,
       description: component.refs.projectDescription.value
     }
