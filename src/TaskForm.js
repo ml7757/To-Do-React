@@ -14,25 +14,27 @@ class TaskForm extends React.Component{
     var component = this;
     // this.refs...value references the formfield 'ref' attribute and we capture their value that was
     // submitted by clicking the submit button.
-    // it is stored in an object, reflecting the database table column names.
+    // we store it in an object, reflecting the database table's column names.
     var formData = {
       task_description: this.refs.taskDescription.value,
       duedate: this.refs.dueDate.value
     }
-    // we want to POST this to the api via ajax in JSON formData
+    // we want to POST formData to the api via ajax in JSON format
     jQuery.ajax({
       type: "POST",
       url: "https://checktaskmanager.herokuapp.com/tasks.json",
+      contentType: "application/json",
+      dataType: "json",
       data: JSON.stringify({
         task: formData
-      }),
-      contentType: "application/json",
-      dataType: "json"
+      })
     }).done(function(data){
       console.log(data);
       // on successful post, receiving 200 status from the server, we want to tell our parent
       // that we have changed.
-      // our parent was so kind to give us a 'onChange' property :)
+      // our parent was so kind to give us the 'onChange' property :)
+      // the onChange property in the parent fires the 'renderTasks' method,
+      // reloading the state with the updated tasks.
       component.props.onChange();
 
     }).fail(function(data){
