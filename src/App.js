@@ -41,7 +41,7 @@ class App extends React.Component{
     console.log(task);
     jQuery.ajax({
         type: "POST",
-        url: "https://checktaskmanager.herokuapp.com/",
+        url: "https://checktaskmanager.herokuapp.com/tasks.json",
         data: JSON.stringify({
             task: task
         }),
