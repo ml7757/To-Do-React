@@ -1,6 +1,6 @@
 import './stylesheets/components.scss';
 import React from 'react';
-import Projects from './Projects';
+import ProjectList from './ProjectList';
 
 class App extends React.Component{
 
@@ -15,7 +15,7 @@ class App extends React.Component{
             <div className="row">
               <div className="col-sm-6 col-sm-offset-3">
                 <img className="logo" src="http://s17.postimg.org/6ntnarrfz/Checklogo2.png" />
-                <Projects />
+                <ProjectList />
               </div>
              </div>
           </div>

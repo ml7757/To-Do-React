@@ -2,7 +2,7 @@ import './stylesheets/components.scss';
 import React from 'react';
 import TaskList from './TaskList';
 
-class Project extends React.Component{
+class ProjectItem extends React.Component{
 
     constructor(){
       super();
@@ -11,11 +11,11 @@ class Project extends React.Component{
     render(){
       return(
         <div>
-          <h1>Our Tasks</h1>
-          <TaskList  />
+          <h1>My Project</h1>
+
         </div>
       );
     };
 }
 
-export default Project;
+export default ProjectItem;
