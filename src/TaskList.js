@@ -9,7 +9,8 @@ class TaskList extends React.Component{
       super();
 
       this.state = {
-        tasks: [] //render this with JSON from api
+        tasks: [], //render this with JSON from api
+        messages: []
       };
     }
 
@@ -17,9 +18,18 @@ class TaskList extends React.Component{
       // Let's set the state of the tasks array to the contents of our database via JSON
       var component = this;
       jQuery.getJSON("https://checktaskmanager.herokuapp.com/tasks", function(data){
+        console.log(data);
         component.setState({
           tasks: data.tasks
         });
+      });
+    }
+
+    showMessages(messages){
+      console.log("Hey I am here");
+      var message = messages.responseText;
+      this.setState({
+        messages: message
       });
     }
 
@@ -32,8 +42,19 @@ class TaskList extends React.Component{
     render(){
       return(
           <div>
+            <div>{console.log(this.state.messages)}</div>
             <TaskForm onChange={this.renderTasks.bind(this)}/>
-            <ul className="list-group">
+
+            <table className="table table-hover well">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Task</th>
+                <th>Duedate</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
               {this.state.tasks.map(function(task, i) {
                 return(
                   <Task key={task.id}
@@ -45,7 +66,8 @@ class TaskList extends React.Component{
                    />
                 );
               }, this)}
-          </ul>
+            </tbody>
+            </table>
           </div>
       );
     }

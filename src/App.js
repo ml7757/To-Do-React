@@ -15,7 +15,7 @@ class App extends React.Component{
             <div className="row">
               <div className="col-sm-6 col-sm-offset-3">
                 <img className="logo" src="http://s17.postimg.org/6ntnarrfz/Checklogo2.png" />
-                <TaskList />
+                <TaskList  />
               </div>
              </div>
           </div>

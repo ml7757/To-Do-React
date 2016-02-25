@@ -13,21 +13,22 @@ class Task extends React.Component{
       // we need to rename ourselves again
       var component = this;
 
-      console.log(component);
+      // lets assign the task id to a new variable
       var taskId = component.props.id;
-      console.log(taskId);
-      // when done and the task is removed upon receiving
-      // a 200 message from the server via ajax/JSON we again need to tell
-      // our parent we changed via an onChange prop. This should then fire the reloadTask method in the parent
-      // to reload the updated tasks list from the server
 
       jQuery.ajax({
         method: "DELETE",
+
+        // we have to apend the task id to the url, so the server knows which task to delete.
         url: `https://checktaskmanager.herokuapp.com/tasks/${taskId}`,
         contentType: "application/json",
         dataType: "json"
       })
       .done(function(data){
+        // when done and the task is removed, we receive a
+        // 200 message from the server via ajax/JSON.
+        // our parent we changed via an onChange prop. This should then fire the reloadTask method in the parent
+        // to reload the updated tasks list from the server
         console.log(data);
         component.props.onChange();
       });
@@ -37,13 +38,12 @@ class Task extends React.Component{
 
     render(){
       return(
-        <div>
-          <li className="list-group-item">
-            <a className="pull-right" onClick={this.deleteTask.bind(this)}>"Delete Me"</a>
-            <span>{this.props.taskDescription}</span>
-            <span>{this.props.dueDate}</span>
-          </li>
-        </div>
+          <tr>
+            <th scope="row">{this.props.id}</th>
+            <td>{this.props.taskDescription}</td>
+            <td>{this.props.dueDate}</td>
+            <td><a className="btn btn-danger btn-xs" onClick={this.deleteTask.bind(this)}>x</a></td>
+          </tr>
       );
     }
 }

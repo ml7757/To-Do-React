@@ -5,6 +5,10 @@ class TaskForm extends React.Component{
 
   constructor(){
     super();
+    this.state = {
+      success: [],
+      errors: []
+    };
   }
 
   saveTask(event){
@@ -39,6 +43,13 @@ class TaskForm extends React.Component{
 
     }).fail(function(data){
       console.log(data);
+      // we want to show what went wrong on the page, so the user
+      // knows what happened and how to fix it.
+      component.setState({
+        errors: data.statusText
+      });
+      component.props.onError(component.state.errors);
+
     });
 
   }
