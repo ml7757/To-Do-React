@@ -9,7 +9,6 @@
 // @import "components/todo-item";
 body {
   background-color: #B6B6B6;
-  text-align: center;
 }
 
 .logo {
@@ -32,5 +31,6 @@ body {
       @extend .img-responsive;
       @extend .img-circle;
     }
+
   }
 }
