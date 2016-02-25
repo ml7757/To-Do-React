@@ -38,16 +38,28 @@ class ProjectList extends React.Component{
           <div>
             <h1>Projects</h1>
             <ProjectForm onChange={this.renderProjects.bind(this)} />
-
+            <table className="table table-hover well">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
             {this.state.projects.map(function(project, i){
               return(
                 <ProjectItem key={project.id}
                          name={project.name}
+                         description={project.description}
                          createdAt={project.created_at}
                          onChange={this.renderProjects.bind(this)}
                  />
               );
             }, this)}
+            </tbody>
+            </table>
+
           </div>
         );
     }

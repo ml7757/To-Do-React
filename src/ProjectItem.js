@@ -10,10 +10,11 @@ class ProjectItem extends React.Component{
 
     render(){
       return(
-        <div>
-          <h2>{this.props.name}</h2>
-
-        </div>
+          <tr>
+            <th>{this.props.name}</th>
+            <td>{this.props.description}</td>
+            <td><a className="btn btn-danger btn-xs">x</a></td>
+          </tr>
       );
     };
 }
