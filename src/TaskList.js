@@ -16,14 +16,13 @@ class TaskList extends React.Component{
     renderTasks(){
       // Let's set the state of the tasks array to the contents of our database via JSON
       var component = this;
-
+      console.log("i'm reloading :)");
       jQuery.getJSON("https://checktaskmanager.herokuapp.com/tasks", function(data){
         component.setState({
           tasks: data.tasks
         });
       });
     }
-
 
     // Runs whatever is inside, when the component has mounted
     // in this case, renders all tasks into tasks array from JSON
@@ -34,7 +33,7 @@ class TaskList extends React.Component{
     render(){
       return(
           <div>
-            <TaskForm />
+            <TaskForm onChange={this.renderTasks.bind(this)}/>
             <ul className="list-group">
               {this.state.tasks.map(function(task, i) {
                 return(

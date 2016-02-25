@@ -10,6 +10,8 @@ class TaskForm extends React.Component{
   saveTask(event){
     // we prevent the form from doing the default
     event.preventDefault();
+    // we need to rename ourselves
+    var component = this;
     // this.refs...value references the formfield 'ref' attribute and we capture their value that was
     // submitted by clicking the submit button.
     // it is stored in an object, reflecting the database table column names.
@@ -26,15 +28,19 @@ class TaskForm extends React.Component{
       }),
       contentType: "application/json",
       dataType: "json"
-    }).done(function(){
-      console.log("DONE :)");
+    }).done(function(data){
+      console.log(data);
+      // on successful post, receiving 200 status from the server, we want to tell our parent
+      // that we have changed.
+      // our parent was so kind to give us a 'onChange' property :)
+      component.props.onChange();
 
-    }).fail(function(){
-      console.log("ERROR :(")
+    }).fail(function(data){
+      console.log(data);
     });
 
   }
-  
+
   render(){
     return(
         <form className="form-inline well" onSubmit={this.saveTask.bind(this)}>
