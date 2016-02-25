@@ -18,12 +18,12 @@ class TaskList extends React.Component{
       var component = this;
 
       jQuery.getJSON("https://checktaskmanager.herokuapp.com/tasks", function(data){
-        console.log(data);
         component.setState({
           tasks: data.tasks
         });
       });
     }
+
 
     // Runs whatever is inside, when the component has mounted
     // in this case, renders all tasks into tasks array from JSON
