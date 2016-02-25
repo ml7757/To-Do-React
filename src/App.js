@@ -1,5 +1,6 @@
 import './stylesheets/components.scss';
 import React from 'react';
+import TaskList from './TaskList';
 
 class App extends React.Component{
 
