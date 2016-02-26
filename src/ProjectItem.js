@@ -138,10 +138,10 @@ class ProjectItem extends React.Component{
 
     render(){
       return(<tr className={this.getClassName()}>
-				<Link to={`/project/${this.props.id}`}>{this.props.name}</Link>
+				    <td><Link to={`/project/${this.props.id}`} className="btn btn-info btn-xs"> > </Link></td>
             <td><EditTextField value={this.state.name} onChange={this.updateName.bind(this)} isEditable={!this.state.completed} /></td>
-              <td><EditTextField value={this.state.description} onChange={this.updateDescription.bind(this)} isEditable={!this.state.completed} /></td>
-              <td><a className="btn btn-danger btn-xs" onClick={this.deleteProject.bind(this)}>x</a></td>
+            <td><EditTextField value={this.state.description} onChange={this.updateDescription.bind(this)} isEditable={!this.state.completed} /></td>
+            <td><a className="btn btn-danger btn-xs" onClick={this.deleteProject.bind(this)}>x</a></td>
           </tr>
       );
     };
