@@ -90,13 +90,13 @@ class Task extends React.Component{
         component.props.onChange();
       });
 
-
     }
 
     render(){
       return(
           <li className={this.getClassName()}>
-            <input className="toggle" id={this.props.id} type="checkbox" ref="completed" checked={this.props.status ? "checked" : ""} onChange={this.toggleChecked.bind(this)} />
+            <input className="toggle checkbox" id={this.props.id} type="checkbox" ref="completed" checked={this.props.status ? "checked" : ""} onChange={this.toggleChecked.bind(this)} />
+            <a className="btn btn-danger btn-xs pull-right" onClick={this.deleteTask.bind(this)}>x</a>
             <EditableItem id={this.props.id}
                           taskDescription={this.props.taskDescription}
                           dueDate={this.props.dueDate}
@@ -105,7 +105,6 @@ class Task extends React.Component{
                           onClick={this.changeTask.bind(this)}
                           isEditable={!this.state.status}
                           onChange={this.changeTask.bind(this)}/>
-            <a className="btn btn-danger btn-xs" onClick={this.deleteTask.bind(this)}>x</a>
           </li>
       );
     }
