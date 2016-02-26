@@ -2,6 +2,7 @@ import './stylesheets/components.scss';
 import React from 'react';
 import {Link} from 'react-router';
 import Navbar from './Navbar';
+import Footer from './Footer';
 import ProjectList from './ProjectList';
 
 class App extends React.Component {
@@ -13,15 +14,19 @@ class App extends React.Component {
 
   render() {
     return (
-
-      <div className="bio container">
+<div>
+  <Navbar/>
+      <div className="Site-content">
         <div className="row">
           <div className="col-sm-8 col-sm-offset-2">
-            <Navbar/>
-            <ProjectList/>
-          </div>
+            <ProjectList />
+            </div>
         </div>
       </div>
+<Footer />
+</div>
+
+
     );
   }
 }
