@@ -50,6 +50,7 @@ class ProjectList extends React.Component{
             {this.state.projects.map(function(project, i){
               return(
                 <ProjectItem key={project.id}
+                         id={project.id}
                          name={project.name}
                          description={project.description}
                          createdAt={project.created_at}

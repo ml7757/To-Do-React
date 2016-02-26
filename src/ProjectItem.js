@@ -1,5 +1,6 @@
 import './stylesheets/components.scss';
 import React from 'react';
+import jQuery from 'jquery';
 import TaskList from './TaskList';
 
 class ProjectItem extends React.Component{
@@ -8,12 +9,39 @@ class ProjectItem extends React.Component{
       super();
     }
 
+    deleteProject(event){
+      event.preventDefault();
+
+      // we need to rename ourselves again
+      var component = this;
+
+      // lets assign the task id to a new variable
+      var projectId = component.props.id;
+
+      jQuery.ajax({
+        method: "DELETE",
+
+        // we have to apend the task id to the url, so the server knows which task to delete.
+        url: `http://localhost:8888/projects/${projectId}`,
+        contentType: "application/json",
+        dataType: "json"
+      })
+      .done(function(data){
+        // when done and the task is removed, we receive a
+        // 200 message from the server via ajax/JSON.
+        // our parent we changed via an onChange prop. This should then fire the reloadTask method in the parent
+        // to reload the updated tasks list from the server
+        console.log(data);
+        component.props.onChange();
+      });
+    }
+
     render(){
       return(
           <tr>
             <th>{this.props.name}</th>
             <td>{this.props.description}</td>
-            <td><a className="btn btn-danger btn-xs">x</a></td>
+            <td><a className="btn btn-danger btn-xs" onClick={this.deleteProject.bind(this)}>x</a></td>
           </tr>
       );
     };
