@@ -13,14 +13,17 @@ class App extends React.Component {
 
     render(){
         return (
-            <div className="container">
-              <div className="row">
-                <Navbar />
-               <div className="col-sm-8 col-sm-offset-2">
-                {this.props.children}
-              </div>
+          <div>
+            <Navbar />
+              <div className="Site-content">
+                <div className="row">
+                 <div className="col-sm-8 col-sm-offset-2">
+                  {this.props.children}
+                 </div>
+               </div>
              </div>
-             </div>
+            <Footer />
+          </div>
         );
     }
   }

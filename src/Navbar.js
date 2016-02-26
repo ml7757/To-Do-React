@@ -26,7 +26,7 @@ class Navbar extends React.Component{
                 <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                   <ul className="nav navbar-nav"> </ul>
                   <ul className="nav navbar-nav navbar-right colo">
-                    <li><a href="../navbar-fixed-top/">Log Out</a></li>
+                    <li><Link to={"/"}>Log Out</Link></li>
                   </ul>
                 </div>
               </div>
