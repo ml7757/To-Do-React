@@ -29,6 +29,10 @@ class ProjectList extends React.Component{
 
   }
 
+  viewNewProject(){
+    // we want to render the project page after successfully adding a new project
+  }
+
   componentDidMount(){
     this.renderProjects();
   }

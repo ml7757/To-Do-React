@@ -33,8 +33,8 @@ class Project extends React.Component{
     render(){
       return(
         <div className="well">
-          <h1>{this.state.project.name}</h1>
-          <h2>{this.state.project.description}</h2>
+          <h1>Project: {this.state.project.name}</h1>
+          <p className="lead">{this.state.project.description}</p>
           <TaskList projectId={this.props.params.projectId} />
         </div>
       );

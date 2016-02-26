@@ -40,8 +40,7 @@ class Task extends React.Component{
     render(){
       return(
           <tr>
-            <th scope="row">{this.props.id}</th>
-            <td>{this.props.taskDescription}</td>
+            <th>{this.props.taskDescription}</th>
             <td>{this.props.dueDate}</td>
             <td><a className="btn btn-danger btn-xs" onClick={this.deleteTask.bind(this)}>x</a></td>
           </tr>

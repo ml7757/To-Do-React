@@ -50,10 +50,9 @@ class TaskList extends React.Component{
             <table className="table table-hover well">
             <thead>
               <tr>
-                <th>#</th>
                 <th>Task</th>
                 <th>Duedate</th>
-                <th></th>
+                <th>&nbsp;</th>
               </tr>
             </thead>
             <tbody>
