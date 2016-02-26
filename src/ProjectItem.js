@@ -1,25 +1,28 @@
+import './stylesheets/components.scss';
 import React from 'react';
 import jQuery from 'jquery';
+import TaskList from './TaskList';
 
-class Task extends React.Component{
+class ProjectItem extends React.Component{
+
     constructor(){
       super();
-
     }
-    deleteTask(event){
+
+    deleteProject(event){
       event.preventDefault();
 
       // we need to rename ourselves again
       var component = this;
 
       // lets assign the task id to a new variable
-      var taskId = component.props.id;
+      var projectId = component.props.id;
 
       jQuery.ajax({
         method: "DELETE",
 
         // we have to apend the task id to the url, so the server knows which task to delete.
-        url: `https://checktaskmanager.herokuapp.com/tasks/${taskId}`,
+        url: `https://checktaskmanager.herokuapp.com/projects/${projectId}`,
         contentType: "application/json",
         dataType: "json"
       })
@@ -31,20 +34,17 @@ class Task extends React.Component{
         console.log(data);
         component.props.onChange();
       });
-
-
     }
 
     render(){
       return(
           <tr>
-            <th scope="row">{this.props.id}</th>
-            <td>{this.props.taskDescription}</td>
-            <td>{this.props.dueDate}</td>
-            <td><a className="btn btn-danger btn-xs" onClick={this.deleteTask.bind(this)}>x</a></td>
+            <th>{this.props.name}</th>
+            <td>{this.props.description}</td>
+            <td><a className="btn btn-danger btn-xs" onClick={this.deleteProject.bind(this)}>x</a></td>
           </tr>
       );
-    }
+    };
 }
 
-export default Task;
+export default ProjectItem;

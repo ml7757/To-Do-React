@@ -1,6 +1,6 @@
 import './stylesheets/components.scss';
 import React from 'react';
-import TaskList from './TaskList';
+import ProjectList from './ProjectList';
 
 class App extends React.Component{
 
@@ -13,9 +13,9 @@ class App extends React.Component{
         return (
           <div className="bio container">
             <div className="row">
-              <div className="col-sm-6 col-sm-offset-3">
+              <div className="col-sm-8 col-sm-offset-2">
                 <img className="logo" src="http://s17.postimg.org/6ntnarrfz/Checklogo2.png" />
-                <TaskList  />
+                <ProjectList />
               </div>
              </div>
           </div>
