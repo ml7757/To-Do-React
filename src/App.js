@@ -12,11 +12,10 @@ class App extends React.Component{
 
     render(){
         return (
-            <div className="bio container">
-
+            <div className="container">
               <div className="row">
-               <div className="col-sm-8 col-sm-offset-2">
                 <Navbar />
+               <div className="col-sm-8 col-sm-offset-2">
                 {this.props.children}
               </div>
              </div>
