@@ -43,19 +43,9 @@ class TaskList extends React.Component{
 
     render(){
       return(
-          <div>
+          <div className="list-group">
             <div>{console.log(this.state.messages)}</div>
             <TaskForm projectId={this.props.projectId} onChange={this.renderTasks.bind(this)}/>
-
-            <table className="table table-hover well">
-            <thead>
-              <tr>
-                <th>Task</th>
-                <th>Duedate</th>
-                <th>&nbsp;</th>
-              </tr>
-            </thead>
-            <tbody>
               {this.state.tasks.map(function(task, i) {
                 return(
                   <Task key={task.id}
@@ -68,8 +58,6 @@ class TaskList extends React.Component{
                    />
                 );
               }, this)}
-            </tbody>
-            </table>
           </div>
       );
     }
