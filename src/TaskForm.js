@@ -21,12 +21,13 @@ class TaskForm extends React.Component{
     // we store it in an object, reflecting the database table's column names.
     var formData = {
       task_description: this.refs.taskDescription.value,
-      duedate: this.refs.dueDate.value
+      duedate: this.refs.dueDate.value,
+      project_id: component.props.projectId
     }
     // we want to POST formData to the api via ajax in JSON format
     jQuery.ajax({
       type: "POST",
-      url: "https://checktaskmanager.herokuapp.com/tasks.json",
+      url: `https://checktaskmanager.herokuapp.com/projects/${formData.project_id}/tasks`,
       contentType: "application/json",
       dataType: "json",
       data: JSON.stringify({
@@ -48,7 +49,6 @@ class TaskForm extends React.Component{
       component.setState({
         errors: data.statusText
       });
-      component.props.onError(component.state.errors);
 
     });
 
