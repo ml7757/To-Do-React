@@ -45,6 +45,7 @@ class ProjectList extends React.Component{
             <table className="table table-hover well">
             <thead>
               <tr>
+                <th></th>
                 <th>Name</th>
                 <th>Description</th>
                 <th></th>
