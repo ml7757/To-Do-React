@@ -1,48 +1,66 @@
 import React from 'react';
 import jQuery from 'jquery';
+import EditableItem from './EditableItem';
 
 class Task extends React.Component{
     constructor(){
       super();
 
+      this.state = {
+
+      }
+
     }
 
     toggleChecked(event) {
-    this.syncState({
-      status: this.refs.completed.checked
-    });
-  }
-
-    syncState(updatedState) {
-    console.log("synching state");
-
-    var component = this;
-    var formData = {
-      task_description: component.props.taskDescription,
-      duedate: component.props.dueDate,
-      project_id: component.props.projectId,
-      id: component.props.id,
-      status: updatedState.status
+      this.updateTask({
+        id: this.props.id,
+        task_description: this.props.taskDescription,
+        duedate: this.props.dueDate,
+        status: this.refs.completed.checked,
+        project_id: this.props.projectId
+      });
     }
-    console.log(formData);
 
-    jQuery.ajax({
-      type: "PUT",
-      url: `https://checktaskmanager.herokuapp.com/projects/${formData.project_id}/tasks/${formData.id}`,
-      data: JSON.stringify({
-          task: formData
-      }),
-      contentType: "application/json",
-      dataType: "json"
-    })
-      .done(function(data) {
-        console.log(data);
-        component.props.onChange();
-      })
+    changeTask(event){
+      console.log(event);
+      this.updateTask({
+        id: this.props.id,
+        task_description: event.task_description,
+        duedate: event.duedate,
+        status: this.refs.completed.checked,
+        project_id: this.props.projectId
+      });
+    }
 
-      .fail(function(error) {
-        console.log(error);
-      })
+    getClassName() {
+      var _classNames = ["list-group-item task"];
+      if (this.state.completed) { _classNames.push("completed"); }
+      return _classNames.join(" ");
+    }
+
+    updateTask(updatedTask) {
+      console.log("synching state");
+
+      var component = this;
+
+      jQuery.ajax({
+        type: "PUT",
+        url: `https://checktaskmanager.herokuapp.com/projects/${updatedTask.project_id}/tasks/${updatedTask.id}`,
+        data: JSON.stringify({
+            task: updatedTask
+        }),
+        contentType: "application/json",
+        dataType: "json"
+        })
+        .done(function(data) {
+          console.log(data);
+          component.props.onChange();
+        })
+
+        .fail(function(error) {
+          console.log(error);
+        })
     }
 
     deleteTask(event){
@@ -77,12 +95,18 @@ class Task extends React.Component{
 
     render(){
       return(
-            <li className="list-group-item">
+          <li className={this.getClassName()}>
             <input className="toggle" id={this.props.id} type="checkbox" ref="completed" checked={this.props.status ? "checked" : ""} onChange={this.toggleChecked.bind(this)} />
-              <h4 className="list-group-item-heading">Due: {this.props.dueDate}</h4>
-              <p className="list-group-item-text">{this.props.taskDescription}</p>
-              <a className="btn btn-danger btn-xs" onClick={this.deleteTask.bind(this)}>x</a>
-            </li>
+            <EditableItem id={this.props.id}
+                          taskDescription={this.props.taskDescription}
+                          dueDate={this.props.dueDate}
+                          status={this.props.status}
+                          projectId={this.props.projectId}
+                          onClick={this.changeTask.bind(this)}
+                          isEditable={!this.state.status}
+                          onChange={this.changeTask.bind(this)}/>
+            <a className="btn btn-danger btn-xs" onClick={this.deleteTask.bind(this)}>x</a>
+          </li>
       );
     }
 }
