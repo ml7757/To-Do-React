@@ -17,14 +17,11 @@ class EditableItem extends React.Component {
   }
 
   taskChanged(event) {
-
     var inputData = {
       task_description: this.refs.taskDescription.value,
       duedate: this.refs.dueDate.value
     }
-
     this.props.onChange(inputData);
-
     this.setState({
       editing: false
     });
