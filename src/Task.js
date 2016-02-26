@@ -13,6 +13,7 @@ class Task extends React.Component{
       var component = this;
 
       // lets assign the task id to a new variable
+      var taskId = component.props.id;
       var projectId = component.props.projectId;
       console.log(projectId);
 
@@ -20,7 +21,7 @@ class Task extends React.Component{
         method: "DELETE",
 
         // we have to apend the task id to the url, so the server knows which task to delete.
-        url: `https://checktaskmanager.herokuapp.com/projects/${projectId}/tasks`,
+        url: `https://checktaskmanager.herokuapp.com/projects/${projectId}/tasks/${taskId}`,
         contentType: "application/json",
         dataType: "json"
       })
@@ -39,8 +40,7 @@ class Task extends React.Component{
     render(){
       return(
           <tr>
-            <th scope="row">{this.props.id}</th>
-            <td>{this.props.taskDescription}</td>
+            <th>{this.props.taskDescription}</th>
             <td>{this.props.dueDate}</td>
             <td><a className="btn btn-danger btn-xs" onClick={this.deleteTask.bind(this)}>x</a></td>
           </tr>
