@@ -13,13 +13,14 @@ class Task extends React.Component{
       var component = this;
 
       // lets assign the task id to a new variable
-      var taskId = component.props.id;
+      var projectId = component.props.projectId;
+      console.log(projectId);
 
       jQuery.ajax({
         method: "DELETE",
 
         // we have to apend the task id to the url, so the server knows which task to delete.
-        url: `https://checktaskmanager.herokuapp.com/tasks/${taskId}`,
+        url: `https://checktaskmanager.herokuapp.com/projects/${projectId}/tasks`,
         contentType: "application/json",
         dataType: "json"
       })

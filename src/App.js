@@ -1,6 +1,6 @@
 import './stylesheets/components.scss';
 import React from 'react';
-import ProjectList from './ProjectList';
+import { Link } from 'react-router';
 
 class App extends React.Component{
 
@@ -15,7 +15,7 @@ class App extends React.Component{
             <div className="row">
               <div className="col-sm-8 col-sm-offset-2">
                 <img className="logo" src="http://s17.postimg.org/6ntnarrfz/Checklogo2.png" />
-                <ProjectList />
+                {this.props.children}
               </div>
              </div>
           </div>

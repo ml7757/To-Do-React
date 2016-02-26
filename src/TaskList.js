@@ -17,7 +17,9 @@ class TaskList extends React.Component{
     renderTasks(){
       // Let's set the state of the tasks array to the contents of our database via JSON
       var component = this;
-      jQuery.getJSON("https://checktaskmanager.herokuapp.com/tasks", function(data){
+      var projectId = component.props.projectId;
+
+      jQuery.getJSON(`https://checktaskmanager.herokuapp.com/projects/${projectId}/tasks`, function(data){
         console.log(data);
         component.setState({
           tasks: data.tasks
@@ -43,7 +45,7 @@ class TaskList extends React.Component{
       return(
           <div>
             <div>{console.log(this.state.messages)}</div>
-            <TaskForm onChange={this.renderTasks.bind(this)}/>
+            <TaskForm projectId={this.props.projectId} onChange={this.renderTasks.bind(this)}/>
 
             <table className="table table-hover well">
             <thead>
@@ -62,6 +64,7 @@ class TaskList extends React.Component{
                         taskDescription={task.task_description}
                         dueDate={task.duedate}
                         status={task.status}
+                        projectId={this.props.projectId}
                         onChange={this.renderTasks.bind(this)}
                    />
                 );

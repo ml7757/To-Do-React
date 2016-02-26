@@ -1,12 +1,13 @@
 import './stylesheets/components.scss';
 import React from 'react';
 import jQuery from 'jquery';
-import TaskList from './TaskList';
+import { Link } from 'react-router';
 
 class ProjectItem extends React.Component{
 
     constructor(){
       super();
+
     }
 
     deleteProject(event){
@@ -39,7 +40,7 @@ class ProjectItem extends React.Component{
     render(){
       return(
           <tr>
-            <th>{this.props.name}</th>
+            <th><Link to={`/project/${this.props.id}`}>{this.props.name}</Link></th>
             <td>{this.props.description}</td>
             <td><a className="btn btn-danger btn-xs" onClick={this.deleteProject.bind(this)}>x</a></td>
           </tr>
