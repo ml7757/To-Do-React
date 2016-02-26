@@ -6,7 +6,6 @@ class Task extends React.Component{
       super();
 
     }
-
     deleteTask(event){
       event.preventDefault();
 

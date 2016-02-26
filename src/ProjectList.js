@@ -20,7 +20,7 @@ class ProjectList extends React.Component{
     var component = this;
 
     // we get the data from the backend via ajax using json
-    jQuery.getJSON("http://localhost:8888/projects.json", function(data){
+    jQuery.getJSON("https://checktaskmanager.herokuapp.com/projects.json", function(data){
       console.log(data);
       component.setState({
         projects: data.projects

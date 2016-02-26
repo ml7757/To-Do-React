@@ -19,7 +19,7 @@ class ProjectsForm extends React.Component{
 
     jQuery.ajax({
       type: "POST",
-      url: "http://localhost:8888/projects.json",
+      url: "https://checktaskmanager.herokuapp.com/projects.json",
       contentType: "application/json",
       dataType: "json",
       data: JSON.stringify({

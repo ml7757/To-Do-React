@@ -22,7 +22,7 @@ class ProjectItem extends React.Component{
         method: "DELETE",
 
         // we have to apend the task id to the url, so the server knows which task to delete.
-        url: `http://localhost:8888/projects/${projectId}`,
+        url: `https://checktaskmanager.herokuapp.com/projects/${projectId}`,
         contentType: "application/json",
         dataType: "json"
       })
