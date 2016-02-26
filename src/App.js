@@ -1,6 +1,7 @@
 import './stylesheets/components.scss';
 import React from 'react';
 import { Link } from 'react-router';
+import Navbar from './Navbar';
 
 class App extends React.Component{
 
@@ -11,14 +12,15 @@ class App extends React.Component{
 
     render(){
         return (
-          <div className="bio container">
-            <div className="row">
-              <div className="col-sm-8 col-sm-offset-2">
-                <img className="logo" src="http://s17.postimg.org/6ntnarrfz/Checklogo2.png" />
+            <div className="bio container">
+
+              <div className="row">
+               <div className="col-sm-8 col-sm-offset-2">
+                <Navbar />
                 {this.props.children}
               </div>
              </div>
-          </div>
+             </div>
         );
     }
   }
